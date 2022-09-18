@@ -28,7 +28,7 @@ NOTE: You can omit the `--schema` option if you prefer to use the default schema
 liquibase --changeLogFile=dbchangelog.xml --schemas=db_example generateChangeLog
 ```
 
-`Add a new changeset to the changelog file:`
+Add a new changeset to the changelog file:
 
 NOTE: A `schemaName=` parameter is provided to ensure that the table is not created in the default `public` postgres schema
 
@@ -45,7 +45,7 @@ NOTE: A `schemaName=` parameter is provided to ensure that the table is not crea
     </changeSet>  
 ```
 
-`Run the liquibase update:`
+Run the liquibase update:
 
 ```bash
 liquibase update
@@ -70,6 +70,8 @@ Unexpected error running Liquibase: Migration failed for changeset dbchangelog.x
 The above error occurs if you generate the dbchangelog.xml file from the database and run a `liquibase update`.  Since the tables already exist the udpate will fail. 
 
 Add `preConditions` to each changeset to prevent the migration error, see examples below and in the dbchangelog.xml provided in repo:
+
+NOTE: See documentation here: https://docs.liquibase.com/concepts/changelogs/preconditions.html
 
 ```xml
 <preConditions onFail="MARK_RAN">
