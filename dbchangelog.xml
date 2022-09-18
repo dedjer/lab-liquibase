@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="djgarcia (generated)" id="1663521877828-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                 <tableExists schemaName="db_example"  tableName="teams"/>
+            </not> 
+        </preConditions>
+        <createTable schemaName="db_example" tableName="teams">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="teams_pkey"/>
+            </column>
+            <column name="team_name" type="VARCHAR"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="djgarcia (generated)" id="1663521877828-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+              <tableExists schemaName="db_example" tableName="players"/>
+            </not> 
+        </preConditions>
+        <createTable schemaName="db_example" tableName="players">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="players_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR"/>
+            <column name="last_name" type="VARCHAR"/>
+            <column name="jersey_number" type="INTEGER"/>
+            <column name="team_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="djgarcia (generated)" id="1663521877828-3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists schemaName="db_example" foreignKeyName="players_team_id_fkey"/>
+            </not> 
+        </preConditions>
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="players" baseTableSchemaName="db_example" constraintName="players_team_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="teams" referencedTableSchemaName="db_example" validate="true"/>
+    </changeSet>
+    <changeSet author="djgarcia" id="4">
+        <preConditions onFail="MARK_RAN">
+            <not>
+              <tableExists schemaName="db_example" tableName="liquibase_gen"/>
+            </not> 
+        </preConditions>
+        <comment>This is a new table being added</comment>
+        <createTable schemaName="db_example" tableName="liquibase_gen">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR"/>
+            <column name="last_name" type="VARCHAR"/>
+            <column name="user_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>  
+</databaseChangeLog>
