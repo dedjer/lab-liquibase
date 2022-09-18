@@ -8,7 +8,7 @@ Manual liquibase project
 
 ## Setup Liquibase - Steps to build this repo from scratch
 
-`Create liquibase.properties file using sample code below, or use the one supplied in this repo:`
+Create liquibase.properties file using sample code below, or use the one supplied in this repo:
 
 ```json
 changeLogFile:  dbchangelog.xml  
@@ -20,7 +20,7 @@ liquibaseProLicenseKey:  licensekey
 liquibase.hub.ApiKey:  APIkey
 ```
 
-`Generate changelog file:`
+Generate changelog file:
 
 NOTE: You can omit the `--schema` option if you prefer to use the default schema or if you've defined the schema in your `liquibase.properties` file
 
